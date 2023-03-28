@@ -1,0 +1,35 @@
+<div class="content-block dx-card responsive-paddings">
+  <div class="dx-field-label" style="margin: 10px;">
+    Paginator <dx-check-box [value]="false" (onValueChanged)="handleValueChange($event)"> </dx-check-box>
+  </div>
+  
+  <div class="dx-field-label" style="margin: 10px;">
+    Filtros <dx-check-box [value]="false" (onValueChanged)="handleValueChange2($event)"> </dx-check-box>
+  </div>  
+
+    <p style="float:none">CAMPO DE PROPIEDADES</p>
+    <div class="dx-field-label" style="position: absolute; right: 0px;">Aplica Color</div>
+    <div class="dx-field-value" style="width: 200px;">
+    <dx-color-box value="#f05b41"></dx-color-box>
+    <br>
+    <input class="dx-field-value" type="text" placeholder="numero columnas" name="text">
+    </div>
+  
+  <dx-data-grid id="gridContainerId"
+      [dataSource]="customers"
+      keyExpr="ID"
+
+      [showBorders]="true"
+      >
+
+    <dxi-column dataField="CompanyName" cssClass="cell-highlighted"></dxi-column>
+    <dxi-column dataField="City"></dxi-column>
+    <dxi-column dataField="State"></dxi-column>
+    <dxi-column dataField="Phone"></dxi-column>
+    <dxi-column dataField="Fax"></dxi-column>
+
+
+    <dxo-filter-row [visible]="isFiltros" ></dxo-filter-row>
+    <dxo-paging [pageSize]="5" [enabled]="isPaginator"></dxo-paging>
+
+  </dx-data-grid>

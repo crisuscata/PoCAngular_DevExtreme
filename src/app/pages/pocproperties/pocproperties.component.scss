@@ -1,0 +1,27 @@
+.dx-datagrid-headers {
+	.dx-datagrid-table {
+		.dx-row {
+			>td {
+				border-bottom: 1px solid #e0e0e0;
+				line-height: 16px;
+				font-weight: 500;
+				font-size: 17px;
+				color: blue ;
+			}
+		}
+	}
+}
+
+.dx-header-row {
+	>td {
+		>.dx-datagrid-text-content {
+			display: inline-block;
+			white-space: normal;
+			vertical-align: top;
+			color: red;
+		}
+	}
+}
+
+
+

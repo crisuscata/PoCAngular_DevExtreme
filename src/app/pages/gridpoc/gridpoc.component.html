@@ -1,0 +1,164 @@
+
+<h2 class="content-block">Grid Poc
+  <!-- agregado botones -->
+  <dx-button style="margin: 10px;"
+  stylingMode="contained"
+  text="Cargar"
+  type="default"
+  [width]="140"
+  (onClick)="clickBDatagrid($event)"
+>
+</dx-button>
+<dx-button
+    stylingMode="contained"
+    text="Limpiar"
+    type="default"
+    (onClick)="clickBDatagridBorrar($event)"
+    [width]="130"
+  >
+  </dx-button>
+
+</h2>
+
+<!-- <dx-data-grid
+  id="gridContainer"
+  [dataSource]="customers"
+  keyExpr="ID"
+  [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']"
+  [showBorders]="true"
+>
+</dx-data-grid> -->
+
+<dx-data-grid class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true">
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+
+
+  <dxi-column
+    dataField="Task_ID"
+    [width]="90"
+    [hidingPriority]="2">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Subject"
+    [width]="190"
+    caption="Subject"
+    [hidingPriority]="8"
+    [visible]="false"
+    >
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Status"
+    caption="Status"
+    [hidingPriority]="6">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Priority"
+    caption="Priority"
+    [hidingPriority]="5">
+    <dxo-lookup
+      [dataSource]="priority"
+      valueExpr="value"
+      displayExpr="name">
+    </dxo-lookup>
+  </dxi-column>
+
+  <dxi-column
+    dataField="ResponsibleEmployee.Employee_Full_Name"
+    caption="Assigned To"
+    [allowSorting]="false"
+    [hidingPriority]="7">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Start_Date"
+    caption="Start Date"
+    dataType="date"
+    [hidingPriority]="3">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Due_Date"
+    caption="Due Date"
+    dataType="date"
+    [hidingPriority]="4">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Priority"
+    caption="Priority"
+    name="Priority"
+    [hidingPriority]="1">
+  </dxi-column>
+
+  <dxi-column
+    dataField="Task_Completion"
+    caption="Completion"
+    [hidingPriority]="0">
+  </dxi-column>
+
+  <dxo-editing
+  mode="popup"
+  [allowUpdating]="true"
+  [allowDeleting]="true"
+  [allowAdding]="true"
+  >
+  </dxo-editing>
+
+  <dxo-export 
+  [enabled]="true"
+  [formats]="['xlsx', 'pdf']"
+    >
+</dxo-export>
+
+</dx-data-grid>
+
+
+<!-- codigo html para ingresar un comboBox-->
+<div class="content-block dx-card responsive-paddings">
+    <div class="dx-field-label">Combobox</div>
+    <div class="dx-field-value">
+      <dx-select-box [items]="simpleTodos"></dx-select-box> 
+    </div>
+</div> 
+
+<div class="content-block dx-card responsive-paddings">
+  <div class="dx-field-label">Combobox2 {{html}} </div>
+  <div class="dx-field-value">
+    {{scombobox}}
+
+  </div>
+</div>    
+
+<!-- codigo html para ingresr una textBox -->
+<div class="content-block dx-card responsive-paddings">
+  <div class="dx-field-label">TextBox</div>
+  <div class="dx-field-value">
+    <dx-text-box placeholder="ingresa un valor..." 
+                 [(value)]="nameValue"
+                 [showClearButton]="true" />      
+  </div>
+</div>
+
+<!-- codigo html para ingresar un calendar -->
+<div class="content-block dx-card responsive-paddings">
+  <div class="dx-field-label">Calendario</div>
+  <div class="dx-field-value">
+    <dx-date-box
+    id="selected-date"
+    [min]="minDateValue"
+    [max]="maxDateValue"
+    [(value)]="currentValue"
+     />  
+  </div>
+</div>
